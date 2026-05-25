@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WIDEAREA WORLD TRADING LIMITED</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Global Styles */
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #e74c3c;
+            --dark-color: #2c3e50;
+            --light-color: #ecf0f1;
+            --accent-color: #f39c12;
+            --text-color: #333;
+            --background-color: #f8f9fa;
+            --card-background: #fff;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* Header Styles */
+        .header {
+            background-color: var(--dark-color);
+            color: var(--light-color);
+            padding: 2rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(52, 152, 219, 0.2) 0%, rgba(231, 76, 60, 0.2) 100%);
+            z-index: 0;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .contact-item i {
+            color: var(--accent-color);
+        }
+
+        /* Navigation Styles */
+        .nav {
+            background-color: var(--card-background);
+            box-shadow: var(--box-shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 60px;
+        }
+
+        .nav-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .language-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            color: var(--text-color);
+            padding: 0;
+            transition: var(--transition);
+        }
+
+        .language-toggle:hover {
+            color: var(--primary-color);
+        }
+
+        /* About Section */
+        .about {
+            padding: 4rem 0;
+            background-color: var(--light-color);
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: var(--dark-color);
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .about-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+
+        /* Products Section */
+        .products {
+            padding: 4rem 0;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .product-card {
+            background-color: var(--card-background);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            overflow: hidden;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--light-color);
+        }
+
+        .product-image img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            transition: var(--transition);
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
+        }
+
+        .product-info {
+            padding: 1.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-title {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--dark-color);
+            font-weight: 600;
+        }
+
+        .product-description {
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-color);
+            flex: 1;
+        }
+
+        .product-price {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        .product-button {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .product-button:hover {
+            background-color: var(--dark-color);
+            transform: translateY(-2px);
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 4rem 0;
+            background-color: var(--light-color);
+        }
+
+        .contact-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: var(--card-background);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 2rem;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-group label {
+            font-weight: 500;
+            color: var(--dark-color);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .submit-button {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: var(--border-radius);
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            align-self: flex-start;
+        }
+
+        .submit-button:hover {
+            background-color: var(--dark-color);
+            transform: translateY(-2px);
+        }
+
+        /* Footer Styles */
+        .footer {
+            background-color: var(--dark-color);
+            color: var(--light-color);
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+        }
+
+        .footer-info {
+            margin-bottom: 2rem;
+        }
+
+        .footer-info p {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-social {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--light-color);
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .social-link:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding-top: 2rem;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+            
+            .nav-links {
+                gap: 1rem;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .submit-button {
+                align-self: stretch;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-content,
+            .nav-container,
+            .section-container {
+                padding: 0 1rem;
+            }
+            
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-container {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="App">
+        <!-- Header Section -->
+        <header class="header">
+            <div class="header-content">
+                <h1>WIDEAREA WORLD TRADING LIMITED</h1>
+                <p id="business-description">批發銷售智能穿戴設備，如智能電子手錶和防水電子手錶</p>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-user"></i>
+                        <span id="contact-person">聯絡人：張先生</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>Email: wordzhangjiawei@outlook.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>Phone: 17840430809</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Address: UNIT 2A, 17/F GLENEALY TOWER, NO.1 GLENEALY CENTRAL, HONG KONG</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="nav">
+            <div class="nav-container">
+                <a href="#" class="nav-logo">WIDEAREA</a>
+                <div class="nav-links">
+                    <a href="#about" class="nav-link" id="about-link">關於我們</a>
+                    <a href="#products" class="nav-link" id="products-link">產品展示</a>
+                    <a href="#contact" class="nav-link" id="contact-link">聯繫我們</a>
+                    <button onclick="toggleLanguage()" class="language-toggle" id="language-toggle">English</button>
+                </div>
+            </div>
+        </nav>
+
+        <!-- About Section -->
+        <section id="about" class="about">
+            <div class="section-container">
+                <h2 class="section-title" id="about-title">關於我們</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p id="about-text-1">WIDEAREA WORLD TRADING LIMITED 是一家專注於智能穿戴設備批發的公司，我們致力於為客戶提供高品質的智能電子手錶和防水電子手錶。</p>
+                        <p id="about-text-2">我們的產品採用最新的技術，具備多種功能，如心率監測、步數統計、睡眠監測、運動模式切換等，適合各種運動場景和日常生活使用。</p>
+                        <p id="about-text-3">我們擁有專業的團隊，為客戶提供優質的服務和支持，確保客戶能夠獲得滿意的產品和體驗。</p>
+                        <p id="about-text-4">無論您是零售商、分銷商還是企業客戶，我們都能為您提供具有競爭力的價格和靈活的合作方案。</p>
+                    </div>
+                    <div class="about-image">
+                        <img src="images/智能手表黑.jpg" alt="智能手錶" id="about-image-alt">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Products Section -->
+        <section id="products" class="products">
+            <div class="section-container">
+                <h2 class="section-title" id="products-title">產品展示</h2>
+                <div class="products-grid">
+                    <!-- Product 1 -->
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="images/智能手表橙色.jpg" alt="運動款智能手錶 - 橙色" id="product-1-alt">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title" id="product-1-title">運動款智能手錶 - 橙色</h3>
+                            <p class="product-description" id="product-1-desc">專為運動愛好者設計的智能手錶，具備心率監測、步數統計、防水功能，適合各種運動場景。</p>
+                            <p class="product-price">$99.99</p>
+                            <a href="#contact" class="product-button" id="product-1-button">立即諮詢</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Product 2 -->
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="images/智能手表白.jpg" alt="運動款智能手錶 - 白色" id="product-2-alt">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title" id="product-2-title">運動款智能手錶 - 白色</h3>
+                            <p class="product-description" id="product-2-desc">簡約白色設計，多功能智能手錶，支援運動模式切換、睡眠監測，防水等級50米。</p>
+                            <p class="product-price">$99.99</p>
+                            <a href="#contact" class="product-button" id="product-2-button">立即諮詢</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Product 3 -->
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="images/智能手表粉.jpg" alt="運動款智能手錶 - 粉色" id="product-3-alt">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title" id="product-3-title">運動款智能手錶 - 粉色</h3>
+                            <p class="product-description" id="product-3-desc">時尚粉色外觀，適合女性用戶的智能手錶，具備月經周期管理、運動追蹤等功能。</p>
+                            <p class="product-price">$99.99</p>
+                            <a href="#contact" class="product-button" id="product-3-button">立即諮詢</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Product 4 -->
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="images/智能手表花.jpg" alt="運動款智能手錶 - 花色" id="product-4-alt">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title" id="product-4-title">運動款智能手錶 - 花色</h3>
+                            <p class="product-description" id="product-4-desc">獨特花色設計，個性化智能手錶，支援多種運動模式，續航時間長達7天。</p>
+                            <p class="product-price">$109.99</p>
+                            <a href="#contact" class="product-button" id="product-4-button">立即諮詢</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Product 5 -->
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="images/智能手表黑.jpg" alt="運動款智能手錶 - 黑色" id="product-5-alt">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title" id="product-5-title">運動款智能手錶 - 黑色</h3>
+                            <p class="product-description" id="product-5-desc">經典黑色設計，商務運動兩相宜的智能手錶，具備消息提醒、來電顯示等功能。</p>
+                            <p class="product-price">$99.99</p>
+                            <a href="#contact" class="product-button" id="product-5-button">立即諮詢</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact">
+            <div class="section-container">
+                <h2 class="section-title" id="contact-title">客戶諮詢</h2>
+                <div class="contact-container">
+                    <form onsubmit="handleSubmit(event)" class="contact-form">
+                        <div class="form-group">
+                            <label for="name" id="name-label">姓名</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" id="email-label">郵箱</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone" id="phone-label">電話</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="product" id="product-label">感興趣的產品</label>
+                            <input type="text" id="product" name="product">
+                        </div>
+                        <div class="form-group">
+                            <label for="message" id="message-label">諮詢內容</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-button" id="submit-button">提交諮詢</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer Section -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-logo">WIDEAREA WORLD TRADING LIMITED</div>
+                <div class="footer-info">
+                    <p id="footer-contact">聯絡人：張先生</p>
+                    <p>Email: wordzhangjiawei@outlook.com</p>
+                    <p>Phone: 17840430809</p>
+                    <p>Address: UNIT 2A, 17/F GLENEALY TOWER, NO.1 GLENEALY CENTRAL, HONG KONG</p>
+                </div>
+                <div class="footer-social">
+                    <a href="#" class="social-link">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="social-link">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="social-link">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="social-link">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2026 WIDEAREA WORLD TRADING LIMITED. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // 语言状态，默认中文
+        let language = 'zh';
+
+        // 切换语言
+        function toggleLanguage() {
+            language = language === 'zh' ? 'en' : 'zh';
+            updateLanguage();
+        }
+
+        // 更新页面语言
+        function updateLanguage() {
+            if (language === 'zh') {
+                // 中文
+                document.getElementById('business-description').textContent = '批發銷售智能穿戴設備，如智能電子手錶和防水電子手錶';
+                document.getElementById('contact-person').textContent = '聯絡人：張先生';
+                document.getElementById('about-link').textContent = '關於我們';
+                document.getElementById('products-link').textContent = '產品展示';
+                document.getElementById('contact-link').textContent = '聯繫我們';
+                document.getElementById('language-toggle').textContent = 'English';
+                document.getElementById('about-title').textContent = '關於我們';
+                document.getElementById('about-text-1').textContent = 'WIDEAREA WORLD TRADING LIMITED 是一家專注於智能穿戴設備批發的公司，我們致力於為客戶提供高品質的智能電子手錶和防水電子手錶。';
+                document.getElementById('about-text-2').textContent = '我們的產品採用最新的技術，具備多種功能，如心率監測、步數統計、睡眠監測、運動模式切換等，適合各種運動場景和日常生活使用。';
+                document.getElementById('about-text-3').textContent = '我們擁有專業的團隊，為客戶提供優質的服務和支持，確保客戶能夠獲得滿意的產品和體驗。';
+                document.getElementById('about-text-4').textContent = '無論您是零售商、分銷商還是企業客戶，我們都能為您提供具有競爭力的價格和靈活的合作方案。';
+                document.getElementById('about-image-alt').alt = '智能手錶';
+                document.getElementById('products-title').textContent = '產品展示';
+                document.getElementById('product-1-title').textContent = '運動款智能手錶 - 橙色';
+                document.getElementById('product-1-desc').textContent = '專為運動愛好者設計的智能手錶，具備心率監測、步數統計、防水功能，適合各種運動場景。';
+                document.getElementById('product-1-button').textContent = '立即諮詢';
+                document.getElementById('product-1-alt').alt = '運動款智能手錶 - 橙色';
+                document.getElementById('product-2-title').textContent = '運動款智能手錶 - 白色';
+                document.getElementById('product-2-desc').textContent = '簡約白色設計，多功能智能手錶，支援運動模式切換、睡眠監測，防水等級50米。';
+                document.getElementById('product-2-button').textContent = '立即諮詢';
+                document.getElementById('product-2-alt').alt = '運動款智能手錶 - 白色';
+                document.getElementById('product-3-title').textContent = '運動款智能手錶 - 粉色';
+                document.getElementById('product-3-desc').textContent = '時尚粉色外觀，適合女性用戶的智能手錶，具備月經周期管理、運動追蹤等功能。';
+                document.getElementById('product-3-button').textContent = '立即諮詢';
+                document.getElementById('product-3-alt').alt = '運動款智能手錶 - 粉色';
+                document.getElementById('product-4-title').textContent = '運動款智能手錶 - 花色';
+                document.getElementById('product-4-desc').textContent = '獨特花色設計，個性化智能手錶，支援多種運動模式，續航時間長達7天。';
+                document.getElementById('product-4-button').textContent = '立即諮詢';
+                document.getElementById('product-4-alt').alt = '運動款智能手錶 - 花色';
+                document.getElementById('product-5-title').textContent = '運動款智能手錶 - 黑色';
+                document.getElementById('product-5-desc').textContent = '經典黑色設計，商務運動兩相宜的智能手錶，具備消息提醒、來電顯示等功能。';
+                document.getElementById('product-5-button').textContent = '立即諮詢';
+                document.getElementById('product-5-alt').alt = '運動款智能手錶 - 黑色';
+                document.getElementById('contact-title').textContent = '客戶諮詢';
+                document.getElementById('name-label').textContent = '姓名';
+                document.getElementById('email-label').textContent = '郵箱';
+                document.getElementById('phone-label').textContent = '電話';
+                document.getElementById('product-label').textContent = '感興趣的產品';
+                document.getElementById('message-label').textContent = '諮詢內容';
+                document.getElementById('submit-button').textContent = '提交諮詢';
+                document.getElementById('footer-contact').textContent = '聯絡人：張先生';
+            } else {
+                // 英文
+                document.getElementById('business-description').textContent = 'Wholesale sales of smart wearable devices, such as smart electronic watches and waterproof electronic watches';
+                document.getElementById('contact-person').textContent = 'Contact: Mr. Zhang';
+                document.getElementById('about-link').textContent = 'About Us';
+                document.getElementById('products-link').textContent = 'Products';
+                document.getElementById('contact-link').textContent = 'Contact Us';
+                document.getElementById('language-toggle').textContent = '繁體中文';
+                document.getElementById('about-title').textContent = 'About Us';
+                document.getElementById('about-text-1').textContent = 'WIDEAREA WORLD TRADING LIMITED is a company specializing in wholesale of smart wearable devices, we are committed to providing customers with high-quality smart electronic watches and waterproof electronic watches.';
+                document.getElementById('about-text-2').textContent = 'Our products use the latest technology, with multiple functions such as heart rate monitoring, step counting, sleep monitoring, sports mode switching, etc., suitable for various sports scenarios and daily use.';
+                document.getElementById('about-text-3').textContent = 'We have a professional team to provide customers with high-quality services and support, ensuring that customers can get satisfactory products and experience.';
+                document.getElementById('about-text-4').textContent = 'Whether you are a retailer, distributor or corporate customer, we can provide you with competitive prices and flexible cooperation plans.';
+                document.getElementById('about-image-alt').alt = 'Smart Watch';
+                document.getElementById('products-title').textContent = 'Products';
+                document.getElementById('product-1-title').textContent = 'Sports Smart Watch - Orange';
+                document.getElementById('product-1-desc').textContent = 'Smart watch designed for sports enthusiasts, with heart rate monitoring, step counting, waterproof function, suitable for various sports scenarios.';
+                document.getElementById('product-1-button').textContent = 'Inquire Now';
+                document.getElementById('product-1-alt').alt = 'Sports Smart Watch - Orange';
+                document.getElementById('product-2-title').textContent = 'Sports Smart Watch - White';
+                document.getElementById('product-2-desc').textContent = 'Simple white design, multi-functional smart watch, support sports mode switching, sleep monitoring, waterproof rating 50 meters.';
+                document.getElementById('product-2-button').textContent = 'Inquire Now';
+                document.getElementById('product-2-alt').alt = 'Sports Smart Watch - White';
+                document.getElementById('product-3-title').textContent = 'Sports Smart Watch - Pink';
+                document.getElementById('product-3-desc').textContent = 'Fashionable pink appearance, smart watch suitable for female users, with menstrual cycle management, sports tracking and other functions.';
+                document.getElementById('product-3-button').textContent = 'Inquire Now';
+                document.getElementById('product-3-alt').alt = 'Sports Smart Watch - Pink';
+                document.getElementById('product-4-title').textContent = 'Sports Smart Watch - Floral';
+                document.getElementById('product-4-desc').textContent = 'Unique floral design, personalized smart watch, support multiple sports modes, battery life up to 7 days.';
+                document.getElementById('product-4-button').textContent = 'Inquire Now';
+                document.getElementById('product-4-alt').alt = 'Sports Smart Watch - Floral';
+                document.getElementById('product-5-title').textContent = 'Sports Smart Watch - Black';
+                document.getElementById('product-5-desc').textContent = 'Classic black design, smart watch suitable for both business and sports, with message reminder, call display and other functions.';
+                document.getElementById('product-5-button').textContent = 'Inquire Now';
+                document.getElementById('product-5-alt').alt = 'Sports Smart Watch - Black';
+                document.getElementById('contact-title').textContent = 'Customer Inquiry';
+                document.getElementById('name-label').textContent = 'Name';
+                document.getElementById('email-label').textContent = 'Email';
+                document.getElementById('phone-label').textContent = 'Phone';
+                document.getElementById('product-label').textContent = 'Interested Product';
+                document.getElementById('message-label').textContent = 'Inquiry Content';
+                document.getElementById('submit-button').textContent = 'Submit Inquiry';
+                document.getElementById('footer-contact').textContent = 'Contact: Mr. Zhang';
+            }
+        }
+
+        // 处理表单提交
+        function handleSubmit(e) {
+            e.preventDefault();
+            // 这里可以添加表单提交逻辑
+            alert(language === 'zh' ? '感謝您的諮詢，我們會儘快與您聯繫！' : 'Thank you for your inquiry, we will contact you soon!');
+            e.target.reset();
+        }
+    </script>
+</body>
+</html>
